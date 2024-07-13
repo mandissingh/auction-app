@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.player-info {
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the div */
+    margin-bottom: 20px; /* Space between player info boxes */
+    max-width: 300px; /* Maximum width of the div */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    font-family: 'Arial', sans-serif; /* Font family */
+}
+
+.player-info strong {
+    color: #333; /* Darker text color for labels */
+    font-size: 16px; /* Font size for labels */
+}
+
+.player-info div {
+    margin-bottom: 10px; /* Space between each info line */
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.player-card {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.player-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.player-card h2 {
+    margin: 0;
+    color: #333;
+}
+
+.player-card p {
+    margin: 5px 0;
+    color: #666;
+}
