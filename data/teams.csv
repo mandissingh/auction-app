@@ -1,0 +1,8 @@
+id,name,image_path,starting_budget,used_budget,players
+0,none,none,none,none,none
+1,Alpine Knight Riders,images/kkr.jpeg,200000000,0,NA
+2,Alpine Super Kings,images/csk.jpeg,200000000,30000000,NA
+3,Alpine Avengers,images/avg.jpeg,200000000,60000000,NA
+4,Alpine Warriors,images/war.jpeg,200000000,0,NA
+5,GenZ Strikers,images/str.jpeg,200000000,50000000,NA
+6,Alpine Super Giants,images/lsg.jpeg,200000000,0,NA

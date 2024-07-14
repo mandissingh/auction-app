@@ -1,6 +1,6 @@
 id,name,age,role,base_price,image_path,status,sold_price,team
-1,Virat Kohli,31,Batsman,25000000,images/virat_kohli.jpeg,Sold,0,Alpine Super Kings
-2,Jasprit Bumrah,27,Bowler,18000000,images/jasprit_bumrah.jpeg,Sold,100000,GenZ Strikers
-3,Rohit Sharma,33,Batsman,20000000,images/rohit_sharma.jpeg,Unsold,0,NA
-4,Ravindra Jadeja,31,All-rounder,15000000,images/ravindra_jadeja.jpeg,Unsold,0,NA
-5,MS Dhoni,39,Wicketkeeper,22000000,images/ms_dhoni.jpeg,Unsold,0,NA
+1,Virat Kohli,31,Batsman,25000000,images/virat_kohli.jpeg,Sold,60000000,3
+2,Jasprit Bumrah,27,Bowler,18000000,images/jasprit_bumrah.jpeg,Sold,50000000,5
+3,Rohit Sharma,33,Batsman,20000000,images/rohit_sharma.jpeg,Unsold,0,0
+4,Ravindra Jadeja,31,All-rounder,15000000,images/ravindra_jadeja.jpeg,Sold,30000000,2
+5,MS Dhoni,39,Wicketkeeper,22000000,images/ms_dhoni.jpeg,Unsold,0,0

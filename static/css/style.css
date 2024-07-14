@@ -5,15 +5,27 @@ body {
     padding: 20px;
 }
 
+h1 {
+    font-family: 'Roboto', sans-serif; /* Example font */
+    color: #007BFF; /* Example color: Bootstrap primary blue */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
+    text-align: center; /* Centers the heading */
+    margin-top: 20px; /* Adds space above the heading */
+    padding-bottom: 20px; /* Adds space below the heading */
+}
+
 .player-info {
     background-color: #f0f0f0; /* Light grey background */
     border: 1px solid #ddd; /* Light grey border */
     border-radius: 8px; /* Rounded corners */
     padding: 20px; /* Padding inside the div */
     margin-bottom: 20px; /* Space between player info boxes */
+    margin-right: 30px; /* Space between player info boxes */
     max-width: 300px; /* Maximum width of the div */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
     font-family: 'Arial', sans-serif; /* Font family */
+    width: 250px;
+    height: 100px;
 }
 
 .player-info strong {
@@ -63,4 +75,84 @@ h1 {
 .player-card p {
     margin: 5px 0;
     color: #666;
+}
+
+.btn-home {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-home:hover {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 80%);
+    transform: translateY(-2px);
+}
+
+.btn-home:active {
+    transform: translateY(1px);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: nowrap;
+}
+
+.btn-home {
+    display: inline-block; /* Or you can remove this if using flex */
+    margin-right: 10px; /* Adjust as needed */
+    /* Ensure other properties do not force the buttons to be too wide */
+}
+
+.image-container {
+    width: 200px; /* Desired width */
+    height: 200px; /* Desired height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* Removes bottom space/aligns at the top */
+}
+
+form {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+select, input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
 }

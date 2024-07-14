@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACL Player Auction</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ACL Player Auction</h1>
+        <div class="btn-container">
+        <a href="/" class="btn-home">Home</a><br>
+        <a href="/teams" class="btn-home">Teams</a><br>
+        <a href="/unsold_players" class="btn-home">Unsold Players</a><br>
+        <a href="/sold_players" class="btn-home">Sold Players</a><br>
+    </div>
+        {% for team in teams %}
+            {% if team.id != '0' %}
+        <div class="player-card" id="{{ team.name | replace(' ', '-') | lower }}">
+            <img src="static/{{ team.image_path }}" alt="{{ team.name }}" onclick="window.location.href='/team/{{ team.id }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
+            <div class="player-info">
+            <div><strong>Name:</strong> {{ team.name }}</div>
+            <div><strong>Starting Budget:</strong> {{ format_indian(team.starting_budget) }}</div>
+            <div><strong>Used Budget:</strong> {{ format_indian(team.used_budget) }}</div>
+            <div><strong>Remaining Budget:</strong> {{ format_indian(team.starting_budget | int - team.used_budget | int) }}</div>
+        </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

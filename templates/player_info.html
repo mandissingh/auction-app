@@ -8,12 +8,17 @@
 </head>
 <body>
     <div class="container">
+        <h1>ACL Player Auction</h1>
+        <div class="btn-container">
         <a href="/" class="btn-home">Home</a><br>
+        <a href="/teams" class="btn-home">Teams</a><br>
         <a href="/unsold_players" class="btn-home">Unsold Players</a><br>
         <a href="/sold_players" class="btn-home">Sold Players</a><br>
+    </div>
     <div class="player-card" id="{{ player.name | replace(' ', '-') | lower }}">
-        <h1>{{ player.name }}</h1>
-        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" style="width: 100%; max-width: 200px; height: auto;">
+        <div class="image-container">
+        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}"  style="width: 100%; max-width: 200px; height: auto;">
+    </div>
     <div class="player-info">
         <div><strong>Id:</strong> {{ player.id }}</div>
         <div><strong>Name:</strong> {{ player.name }}</div>
@@ -24,8 +29,13 @@
         <div><strong>Base Price:</strong> Rs. {{ format_indian(player.base_price) }}</div>
         <div><strong>Status:</strong> {{ player.status }}</div>
         <div><strong>Sold Price:</strong> Rs. {{ format_indian(player.sold_price) }}</div>
-        <div><strong>Team:</strong> {{ player.team }}</div>
+        <div><strong>Team:</strong> {{ teams[player.team | int]['name'] }}</div>
     </div>
+    {% if player.status == 'Sold' %}
+    <div class="image-container">
+        <img src="../static/{{ teams[player.team | int]['image_path'] }}" onclick="window.location.href='/team/{{ teams[player.team | int]['id'] }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
+    </div>
+    {% endif %}
     </div>
     <form action="/update_status/{{ player.id }}" method="post">
         <label for="status">Status:</label>
@@ -39,19 +49,16 @@
     <form action="/update_team/{{ player.id }}" method="post">
         <label for="team">Team:</label>
         <select name="team" id="team">
-            <option value="Alpine Knight Riders" {% if player.team == 'NA' %}selected{% endif %}>Alpine Knight Riders</option>
-            <option value="Alpine Super Kings" {% if player.team == 'NA' %}selected{% endif %}>Alpine Super Kings</option>
-            <option value="Alpine Avengers" {% if player.team == 'NA' %}selected{% endif %}>Alpine Avengers</option>
-            <option value="Alpine Warriors" {% if player.team == 'NA' %}selected{% endif %}>Alpine Warriors</option>
-            <option value="GenZ Strikers" {% if player.team == 'NA' %}selected{% endif %}>GenZ Strikers</option>
-            <option value="Alpine Super Giants" {% if player.team == 'NA' %}selected{% endif %}>Alpine Super Giants</option>
+            {% for team in teams %}
+            <option value="{{ team.id }}" {% if player.team == '0' %}selected{% endif %}>{{ team.name }}</option>
+            {% endfor %}
         </select>
         <input type="submit" value="Update Team">
     </form>
     <form action="/update_sold_price/{{ player.id }}" method="post">
         <label for="sold_price">Sold Price:</label>
         <input type="text" name="sold_price" id="sold_price" value="{% if player.sold_price %}{{ player.sold_price }}{% endif %}">
-        <input type="submit" value="Update Team">
+        <input type="submit" value="Update sold price">
     </form>
 </div>
 </body>
