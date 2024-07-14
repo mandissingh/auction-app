@@ -46,7 +46,7 @@
             <div><strong>Base Price:</strong> Rs. {{ format_indian(player.base_price) }}</div>
             <div><strong>Status:</strong> {{ player.status }}</div>
             <div><strong>Sold Price:</strong> {{ format_indian(player.sold_price) }}</div>
-            <div><strong>Team:</strong> {{ player.team }}</div>
+            <div><strong>Team:</strong> {{ teams[player.team | int]['name'] }}</div>
         </div>
         </div>
         {% endfor %}
