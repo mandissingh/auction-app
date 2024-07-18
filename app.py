@@ -1,10 +1,13 @@
 from flask import Flask, render_template
 from flask import request, redirect, url_for
+import pandas as pd
 
 import csv
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+TEAM_FILE="data/teams.csv"
+PLAYERS_FILE="data/alpine1.csv"
 
 def format_indian(amount):
     """
@@ -35,7 +38,7 @@ def format_indian(amount):
 
 def read_teams():
     teams = []
-    with open('data/teams.csv', mode='r') as file:
+    with open(TEAM_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             teams.append(row)
@@ -43,7 +46,7 @@ def read_teams():
 
 def read_players():
     players = []
-    with open('data/players.csv', mode='r') as file:
+    with open(PLAYERS_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             players.append(row)
@@ -51,7 +54,7 @@ def read_players():
 
 def read_players_filter(filter):
     players = []
-    with open('data/players.csv', mode='r') as file:
+    with open(PLAYERS_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if row['status'] == filter:
@@ -60,7 +63,7 @@ def read_players_filter(filter):
 
 def get_players_for_team(team_id):
     players = []
-    with open('data/players.csv', mode='r') as file:
+    with open(PLAYERS_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if row['team'] == str(team_id):
@@ -69,7 +72,7 @@ def get_players_for_team(team_id):
     return players
 
 def get_player_by_id(player_id):
-    with open('data/players.csv', mode='r') as file:
+    with open(PLAYERS_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if int(row['id']) == player_id:
@@ -77,7 +80,7 @@ def get_player_by_id(player_id):
     return None
 
 def get_team_by_id(team_id):
-    with open('data/teams.csv', mode='r') as file:
+    with open(TEAM_FILE, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if int(row['id']) == team_id:
@@ -99,8 +102,8 @@ def update_field(player_id, field_type, value):
 
     # Write the updated data back to the CSV file if a player was updated
     if updated:
-        with open('data/players.csv', mode='w', newline='') as file:
-            fieldnames = ['id','name','age','role','base_price','image_path','status','sold_price','team']  # Add or remove fieldnames based on your CSV structure
+        with open(PLAYERS_FILE, mode='w', newline='') as file:
+            fieldnames = ['name','age','role','flat','base_price','image_path','status','sold_price','team','id']  # Add or remove fieldnames based on your CSV structure
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(players)
@@ -119,7 +122,7 @@ def update_team_field(team_id, used_budget):
 
     # Write the updated data back to the CSV file if a player was updated
     if updated:
-        with open('data/teams.csv', mode='w', newline='') as file:
+        with open(TEAM_FILE, mode='w', newline='') as file:
             fieldnames = ['id','name','image_path','starting_budget','used_budget','players']  # Add or remove fieldnames based on your CSV structure
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
@@ -149,6 +152,16 @@ def sold_players():
     teams = read_teams()
     return render_template('home.html', players=players, teams=teams, format_indian=format_indian)
 
+@app.route('/random_player')
+def random_player():
+    df = pd.read_csv(PLAYERS_FILE)
+    unsold_players = df[df['status'] == 'Unsold']
+    random_player = unsold_players.sample(n=1).iloc[0]
+    player = random_player.to_dict()
+    teams = read_teams()
+    return render_template('player_info.html', player=player, teams=teams, get_team_by_id=get_team_by_id, format_indian=format_indian)
+
+
 @app.route('/player/<int:player_id>')
 def player_info(player_id):
     # Assuming you have a function to get a player by ID
@@ -164,8 +177,9 @@ def team_info(team_id):
     # Assuming you have a function to get a player by ID
     team = get_team_by_id(team_id)
     players = get_players_for_team(team_id)
+    teams = read_teams()
     if team:
-        return render_template('team_info.html', team=team, players=players, format_indian=format_indian)
+        return render_template('team_info.html', team=team, players=players, teams=teams, format_indian=format_indian)
     else:
         return "Team not found", 404
     

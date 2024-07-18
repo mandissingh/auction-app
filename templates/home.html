@@ -11,10 +11,14 @@
     <div class="container">
         <h1>ACL Player Auction</h1>
         <div class="btn-container">
-        <a href="/" class="btn-home">Home</a><br>
+        <a href="/" class="btn-home">Players</a><br>
         <a href="/teams" class="btn-home">Teams</a><br>
         <a href="/unsold_players" class="btn-home">Unsold Players</a><br>
         <a href="/sold_players" class="btn-home">Sold Players</a><br>
+        <a href="/random_player" class="btn-home">Auction Player</a><br>
+    </div>
+    <div>
+        <h4 class="player-count">{{ players | length }}</h4>
     </div>
         {% for player in players %}
         <div class="player-card" id="{{ player.name | replace(' ', '-') | lower }}">
@@ -22,10 +26,10 @@
             <img src="static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
         </div>
             <div class="player-info">
-            <div><strong>Id:</strong> {{ player.id }}</div>
             <div><strong>Name:</strong> {{ player.name }}</div>
             <div><strong>Age:</strong> {{ player.age }}</div>
             <div><strong>Role:</strong> {{ player.role }}</div>
+            <div><strong>Flat:</strong> {{ player.flat }}</div>
         </div>
         
         <div class="player-info">
