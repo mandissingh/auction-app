@@ -19,8 +19,9 @@
             {% if team.id != '0' %}
         <div class="player-card" id="{{ team.name | replace(' ', '-') | lower }}">
             <img src="static/{{ team.image_path }}" alt="{{ team.name }}" onclick="window.location.href='/team/{{ team.id }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
-            <div class="player-info">
+            <div class="player-info" style="height: 125px">
             <div><strong>Name:</strong> {{ team.name }}</div>
+            <div><strong>Players:</strong> {{ get_players_for_team(team.id) | length }}</div>
             <div><strong>Starting Budget:</strong> {{ format_indian(team.starting_budget) }}</div>
             <div><strong>Used Budget:</strong> {{ format_indian(team.used_budget) }}</div>
             <div><strong>Remaining Budget:</strong> {{ format_indian(team.starting_budget | int - team.used_budget | int) }}</div>

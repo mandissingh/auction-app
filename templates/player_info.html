@@ -37,6 +37,7 @@
     </div>
     {% endif %}
     </div>
+    {% if ip_address == '127.0.0.1' %}
     <form action="/update_status/{{ player.id }}" method="post">
         <label for="status">Status:</label>
         <select name="status" id="status">
@@ -60,6 +61,7 @@
         <input type="text" name="sold_price" id="sold_price" value="{% if player.sold_price %}{{ player.sold_price }}{% endif %}">
         <input type="submit" value="Update sold price">
     </form>
+    {% endif %}
 </div>
 </body>
 </html>

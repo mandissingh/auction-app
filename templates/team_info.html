@@ -17,18 +17,21 @@
     </div>
     <div class="player-card" id="{{ team.name | replace(' ', '-') | lower }}">
         <img src="../static/{{ team.image_path }}" alt="{{ team.name }}" style="width: 100%; max-width: 200px; height: auto;">
-    <div class="player-info">
+    <div class="player-info" style="height: 125px">
         <div><strong>Name:</strong> {{ team.name }}</div>
+        <div><strong>Players:</strong> {{ get_players_for_team(team.id) | length }}</div>
         <div><strong>Starting Budget:</strong> {{ format_indian(team.starting_budget) }}</div>
         <div><strong>Used Budget:</strong> {{ format_indian(team.used_budget) }}</div>
         <div><strong>Remaining Budget:</strong> {{ format_indian(team.starting_budget | int - team.used_budget | int) }}</div>
     </div>
     </div>
+    {% if ip_address == '127.0.0.1' %}
     <form action="/update_team_budget/{{ team.id }}" method="post">
         <label for="used_budget">Budget used:</label>
         <input type="text" name="used_budget" id="used_budget" value="0">
         <input type="submit" value="Update budget">
     </form>
+    {% endif %}
 </div>
 <div class="container">
     {% for player in players %}

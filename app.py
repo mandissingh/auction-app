@@ -138,7 +138,7 @@ def home():
 @app.route('/teams')
 def teams():
     teams = read_teams()
-    return render_template('teams.html', teams=teams, format_indian=format_indian)
+    return render_template('teams.html', teams=teams, get_players_for_team=get_players_for_team, format_indian=format_indian)
 
 @app.route('/unsold_players')
 def unsold_players():
@@ -164,22 +164,24 @@ def random_player():
 
 @app.route('/player/<int:player_id>')
 def player_info(player_id):
+    ip_address = request.remote_addr
     # Assuming you have a function to get a player by ID
     player = get_player_by_id(player_id)
     teams = read_teams()
     if player:
-        return render_template('player_info.html', player=player, teams=teams, get_team_by_id=get_team_by_id, format_indian=format_indian)
+        return render_template('player_info.html', player=player, teams=teams, ip_address=ip_address, get_team_by_id=get_team_by_id, format_indian=format_indian)
     else:
         return "Player not found", 404
     
 @app.route('/team/<int:team_id>')
 def team_info(team_id):
     # Assuming you have a function to get a player by ID
+    ip_address = str(request.remote_addr)+"1"
     team = get_team_by_id(team_id)
     players = get_players_for_team(team_id)
     teams = read_teams()
     if team:
-        return render_template('team_info.html', team=team, players=players, teams=teams, format_indian=format_indian)
+        return render_template('team_info.html', team=team, players=players, ip_address=ip_address, teams=teams, get_players_for_team=get_players_for_team, format_indian=format_indian)
     else:
         return "Team not found", 404
     
@@ -212,4 +214,4 @@ def update_player_sold_price(player_id):
     return redirect(url_for('player_info', player_id=player_id))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
