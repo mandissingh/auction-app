@@ -176,7 +176,7 @@ def player_info(player_id):
 @app.route('/team/<int:team_id>')
 def team_info(team_id):
     # Assuming you have a function to get a player by ID
-    ip_address = str(request.remote_addr)+"1"
+    ip_address = str(request.remote_addr)
     team = get_team_by_id(team_id)
     players = get_players_for_team(team_id)
     teams = read_teams()
@@ -214,4 +214,4 @@ def update_player_sold_price(player_id):
     return redirect(url_for('player_info', player_id=player_id))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)

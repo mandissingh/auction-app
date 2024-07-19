@@ -17,7 +17,7 @@
     </div>
     <div class="player-card" id="{{ player.name | replace(' ', '-') | lower }}">
         <div class="image-container">
-        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}"  style="width: 100%; max-width: 200px; height: auto;">
+        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'"  style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
     </div>
     <div class="player-info">
         <div><strong>Id:</strong> {{ player.id }}</div>
