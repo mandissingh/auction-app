@@ -17,7 +17,7 @@
     </div>
     <div class="player-card" id="{{ player.name | replace(' ', '-') | lower }}">
         <div class="image-container">
-        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'"  style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
+        <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'"  style="width: 150px; cursor: pointer; max-width: 200px; height: 150px;">
     </div>
     <div class="player-info">
         <div><strong>Id:</strong> {{ player.id }}</div>
@@ -33,7 +33,7 @@
     </div>
     {% if player.status == 'Sold' %}
     <div class="image-container">
-        <img src="../static/{{ teams[player.team | int]['image_path'] }}" onclick="window.location.href='/team/{{ teams[player.team | int]['id'] }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
+        <img src="../static/{{ teams[player.team | int]['image_path'] }}" onclick="window.location.href='/team/{{ teams[player.team | int]['id'] }}'" style="width: 150px; cursor: pointer; max-width: 200px; height: 150px;">
     </div>
     {% endif %}
     </div>

@@ -16,6 +16,6 @@ new_df['status'] = "Unsold"
 new_df['sold_price'] = 0
 new_df['team'] = 0
 new_df['id'] = range(1, len(filtered_df) + 1)
-new_df.to_csv('data/alpine1.csv', index=False)
+new_df.to_csv('data/alpine0.csv', index=False)
 
 print(new_df)

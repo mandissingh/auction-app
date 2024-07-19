@@ -7,7 +7,7 @@ import csv
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 TEAM_FILE="data/teams.csv"
-PLAYERS_FILE="data/alpine1.csv"
+PLAYERS_FILE="data/alpine0.csv"
 
 def format_indian(amount):
     """

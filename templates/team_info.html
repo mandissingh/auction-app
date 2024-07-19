@@ -16,7 +16,7 @@
         <a href="/sold_players" class="btn-home">Sold Players</a><br>
     </div>
     <div class="player-card" id="{{ team.name | replace(' ', '-') | lower }}">
-        <img src="../static/{{ team.image_path }}" alt="{{ team.name }}" style="width: 100%; max-width: 200px; height: auto;">
+        <img src="../static/{{ team.image_path }}" alt="{{ team.name }}" style="width: 150px; max-width: 200px; height: 150px;">
     <div class="player-info" style="height: 125px">
         <div><strong>Name:</strong> {{ team.name }}</div>
         <div><strong>Players:</strong> {{ get_players_for_team(team.id) | length }}</div>
@@ -37,7 +37,7 @@
     {% for player in players %}
         <div class="player-card" id="{{ player.name | replace(' ', '-') | lower }}">
             <div class="image-container">
-            <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'" style="width: 100%; cursor: pointer; max-width: 200px; height: auto;">
+            <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'" style="width: 150px; cursor: pointer; max-width: 200px; height: 150px;">
         </div>
             <div class="player-info">
             <div><strong>Id:</strong> {{ player.id }}</div>
