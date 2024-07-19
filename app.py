@@ -68,7 +68,6 @@ def get_players_for_team(team_id):
         for row in reader:
             if row['team'] == str(team_id):
                 players.append(row)
-    print(players)
     return players
 
 def get_player_by_id(player_id):
@@ -84,7 +83,6 @@ def get_team_by_id(team_id):
         reader = csv.DictReader(file)
         for row in reader:
             if int(row['id']) == team_id:
-                print(row)
                 return row
     return None
 
