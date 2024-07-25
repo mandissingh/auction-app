@@ -39,7 +39,7 @@
             <div class="image-container">
             <img src="../static/{{ player.image_path }}" alt="{{ player.name }}" onclick="window.location.href='/player/{{ player.id }}'" style="width: 150px; cursor: pointer; max-width: 200px; height: 150px;">
         </div>
-            <div class="player-info">
+        <div class="player-info" onclick="window.open('{{ player.crichero }}')" style="cursor: pointer;">
             <div><strong>Id:</strong> {{ player.id }}</div>
             <div><strong>Name:</strong> {{ player.name }}</div>
             <div><strong>Age:</strong> {{ player.age }}</div>
