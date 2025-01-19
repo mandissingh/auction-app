@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>ACL Player Auction</h1>
+        <h1>APL Player Auction</h1>
         <div class="btn-container">
         <a href="/" class="btn-home">Players</a><br>
         <a href="/teams" class="btn-home">Teams</a><br>
@@ -46,7 +46,7 @@
             <div><strong>Role:</strong> {{ player.role }}</div>
         </div>
         <div class="player-info">
-            <div><strong>Base Price:</strong> Rs. {{ format_indian(player.base_price) }}</div>
+            <div><strong>Base Price:</strong> Rs. {{ player.base_price }}</div>
             <div><strong>Status:</strong> {{ player.status }}</div>
             <div><strong>Sold Price:</strong> {{ format_indian(player.sold_price) }}</div>
             <div><strong>Team:</strong> {{ teams[player.team | int]['name'] }}</div>

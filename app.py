@@ -7,7 +7,7 @@ import csv
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 TEAM_FILE="data/teams.csv"
-PLAYERS_FILE="data/alpine0.csv"
+PLAYERS_FILE="data/apl0.csv"
 
 def format_indian(amount):
     """
@@ -101,7 +101,7 @@ def update_field(player_id, field_type, value):
     # Write the updated data back to the CSV file if a player was updated
     if updated:
         with open(PLAYERS_FILE, mode='w', newline='') as file:
-            fieldnames = ['name','age','role','flat','base_price','image_path','status','sold_price','team','id','crichero']  # Add or remove fieldnames based on your CSV structure
+            fieldnames = ['name','age','role','flat','base_price','image_path','status','sold_price','team','id','crichero','experience','availability']  # Add or remove fieldnames based on your CSV structure
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(players)
